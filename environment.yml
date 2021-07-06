@@ -2,8 +2,8 @@ name: adpeps
 channels:
   - defaults
 dependencies:
-  - pip=21.0.1=py38hecd8cb5_0
-  - python=3.8.8=h88f2d9e_4
+  - pip=21.0.1
+  - python=3.8.8
   - pip:
     - absl-py==0.12.0
     - flatbuffers==1.12

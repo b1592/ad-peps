@@ -1,12 +1,3 @@
-# TODO
-
-- General code cleanup
-- Observables (`adpeps/ipeps/observables.py` not used)
-- Rewrite `run_ipeps_gs.py` Objective class
-- Fix the numerous evaluation methods in `ipeps.py`
-- Documentation
-
-
 # AD-PEPS
 
 Basic implementation of iPEPS ground-state and excited-state optimization using automatic differentiation.

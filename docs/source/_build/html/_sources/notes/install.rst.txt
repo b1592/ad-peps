@@ -5,7 +5,7 @@ The quickest way of installing the :code:`adpeps` package is to clone the reposi
 
 .. code-block:: bash
 
-  git clone <repo>
+  git clone git@github.com:b1592/ad-peps.git
 
 
 Method 1 (recommended): `conda`

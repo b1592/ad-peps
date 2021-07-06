@@ -1,0 +1,42 @@
+# Base configuration file for iPEPS simulation
+# See the individual config modules for more information
+
+# Simulation options
+# -> ipeps/config.py
+D:             2
+chi:           40
+model:         'heisenberg'
+
+# Prefix for output file
+out_prefix:
+
+# Resume earlier simulation if found
+resume:        True
+
+model_params:
+  J:           1
+
+# Set to 0 to suppress all output besides printing each step
+disp_level:    1
+
+# CTM convergence criterium (singular values norm difference)
+ctm_conv_tol:  1.e-6
+
+# Minimal number of CTM steps
+ctm_min_iter:  4
+
+# Maximal number of CTM steps
+ctm_max_iter:  20
+
+# Flush output (prints with print(*args, flush=True))
+flush_output:  True
+
+# Unit cell pattern (Neel order)
+pattern:
+  [
+    [0,1],
+    [1,0],
+  ]
+
+# Excitations
+momentum_path: 'Bril1'

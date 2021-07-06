@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>adpeps.simulation.run_ipeps_gs &#8212; AD-PEPS  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../index.html">
+<p class="title">AD-PEPS</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../notes/install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../notes/start.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../notes/example.html">
+  Example: 2D Heisenberg model
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.ipeps.ipeps.html">
+  adpeps.ipeps.ipeps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.ipeps.config.html">
+  adpeps.ipeps.config
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.ipeps.ctm.html">
+  adpeps.ipeps.ctm
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.ipeps.models.html">
+  adpeps.ipeps.models
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.simulation.html">
+  adpeps.simulation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../generated/adpeps.utils.html">
+  adpeps.utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notes/install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notes/start.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notes/example.html">
+   Example: 2D Heisenberg model
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../generated/adpeps.ipeps.ipeps.html">
+   adpeps.ipeps.ipeps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../generated/adpeps.ipeps.config.html">
+   adpeps.ipeps.config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../generated/adpeps.ipeps.ctm.html">
+   adpeps.ipeps.ctm
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../generated/adpeps.ipeps.models.html">
+   adpeps.ipeps.models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.ipeps.models.common.html">
+     adpeps.ipeps.models.common
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.ipeps.models.heisenberg.html">
+     adpeps.ipeps.models.heisenberg
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../generated/adpeps.simulation.html">
+   adpeps.simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.simulation.run_ipeps_exci.html">
+     adpeps.simulation.run_ipeps_exci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.simulation.run_ipeps_gs.html">
+     adpeps.simulation.run_ipeps_gs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../generated/adpeps.utils.html">
+   adpeps.utils
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.ctmtensors.html">
+     adpeps.utils.ctmtensors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.empty_tensor.html">
+     adpeps.utils.empty_tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.io.html">
+     adpeps.utils.io
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.nested.html">
+     adpeps.utils.nested
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.printing.html">
+     adpeps.utils.printing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../generated/adpeps.utils.tlist.html">
+     adpeps.utils.tlist
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for adpeps.simulation.run_ipeps_gs</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Main ground-state executable script</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The simulations are intended to be used by calling the package </span>
+<span class="sd">        directly via :code:`python -m adpeps ...`, as described in </span>
+<span class="sd">        :ref:`notes/start`</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">grad</span><span class="p">,</span> <span class="n">jit</span><span class="p">,</span> <span class="n">vmap</span><span class="p">,</span> <span class="n">value_and_grad</span>
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">jax.scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span> <span class="nn">jax.test_util</span> <span class="kn">import</span> <span class="n">check_grads</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">safe_load</span><span class="p">,</span> <span class="n">dump</span>
+<span class="kn">import</span> <span class="nn">jax</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">onp</span>
+
+<span class="kn">from</span> <span class="nn">adpeps.ipeps.ipeps</span> <span class="kn">import</span> <span class="n">iPEPS</span><span class="p">,</span> <span class="n">iPEPS_exci</span>
+<span class="kn">from</span> <span class="nn">adpeps.utils</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">adpeps.utils.printing</span> <span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">import</span> <span class="nn">adpeps.ipeps.config</span> <span class="k">as</span> <span class="nn">sim_config</span>
+
+<div class="viewcode-block" id="run"><a class="viewcode-back" href="../../../generated/adpeps.simulation.run_ipeps_gs.html#adpeps.simulation.run_ipeps_gs.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Start the simulation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config_file: filename of the configuration file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">energies</span>   <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">gradnorms</span>  <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="n">xk</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Output printing function &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">cached_out</span><span class="p">)</span>
+            <span class="n">gradnorms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">gradnrm</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; # ======================== #&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; #      Step completed      #&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; # ======================== #&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Step </span><span class="si">%3d</span><span class="s1">  E: </span><span class="si">%.12f</span><span class="s1">  |grad|: </span><span class="si">%2.8g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">gradnorms</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">E</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">energies</span><span class="p">)]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># np.savez(output_file, peps=peps, v=xk, gradnorms=gradnorms, energies=energies)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="c1"># Show options</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dump</span><span class="p">(</span><span class="n">cfg</span><span class="p">))</span>
+
+    <span class="c1"># Load the configuration file into the sim_config object</span>
+    <span class="n">sim_config</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+
+    <span class="c1"># Initialize the iPEPS</span>
+    <span class="n">peps</span> <span class="o">=</span> <span class="n">iPEPS</span><span class="p">()</span>
+
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">get_gs_file</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output file </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sim_config</span><span class="o">.</span><span class="n">resume</span> <span class="ow">and</span> <span class="n">output_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">loaded_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">peps</span>       <span class="o">=</span> <span class="n">loaded_sim</span><span class="p">[</span><span class="s1">&#39;peps&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">v</span>          <span class="o">=</span> <span class="n">loaded_sim</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span>
+        <span class="n">gradnorms</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">loaded_sim</span><span class="p">[</span><span class="s1">&#39;gradnorms&#39;</span><span class="p">])</span>
+        <span class="n">energies</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">loaded_sim</span><span class="p">[</span><span class="s1">&#39;energies&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resuming existing simulation&quot;</span><span class="p">)</span>
+        <span class="n">verbose</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting new simulation&quot;</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="n">sim_config</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">v</span>   <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">peps</span><span class="o">.</span><span class="n">numel</span><span class="p">(),))</span>
+        <span class="n">v</span>   <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">peps</span><span class="p">)</span>
+
+    <span class="c1"># Call SciPy&#39;s optimization function</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">return_gn</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">xL</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">sim_config</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">jac</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gtol&#39;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="s1">&#39;maxiter&#39;</span><span class="p">:</span><span class="n">sim_config</span><span class="o">.</span><span class="n">max_iterations</span><span class="p">})</span></div>
+
+<div class="viewcode-block" id="Objective"><a class="viewcode-back" href="../../../generated/adpeps.simulation.run_ipeps_gs.html#adpeps.simulation.run_ipeps_gs.Objective">[docs]</a><span class="k">class</span> <span class="nc">Objective</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; Class containing the objective function for the optimizer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peps</span><span class="p">:</span> <span class="n">iPEPS</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            peps: iPEPS object to be optimized</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span>   <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_out</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_jac</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">peps</span>       <span class="o">=</span> <span class="n">peps</span>
+        <span class="sd">&quot;&quot;&quot; iPEPS object &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fun</span>        <span class="o">=</span> <span class="n">peps</span><span class="o">.</span><span class="n">run</span>
+        <span class="sd">&quot;&quot;&quot; Objective function - CTM iterations until convergence </span>
+<span class="sd">            followed by the evaluation of the energy </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_gn</span>  <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gradnrm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Norm of the gradient &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cached_jac</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Objective.jac"><a class="viewcode-back" href="../../../generated/adpeps.simulation.run_ipeps_gs.html#adpeps.simulation.run_ipeps_gs.Objective.jac">[docs]</a>    <span class="k">def</span> <span class="nf">jac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; Computes the vector-Jacobian product (gradient) of the</span>
+<span class="sd">            iPEPS at the current point :attr:`v` in parameter space</span>
+
+<span class="sd">            This function is designed to work with optimizers that make separate </span>
+<span class="sd">            calls to the objective function and the gradient, by caching both.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                v: input variational parameters for the site tensors of </span>
+<span class="sd">                    the iPEPS</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                gradient of the iPEPS with respect to the input parameters :attr:`v`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Cast the regular numpy array into a Jax numpy array for gradient tracking</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cached_jac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> 
+                <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-14</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_jac</span>
+
+        <span class="c1"># Call the forward + backward pass iPEPS code</span>
+        <span class="n">o</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">value_and_grad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span>
+
+        <span class="c1"># Convert to regular Numpy arrays so they can be passed to the optimizer </span>
+        <span class="c1"># and stored without any tracking information by Jax</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+        <span class="c1"># Cache the results</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span>   <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_out</span> <span class="o">=</span> <span class="n">o</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cached_jac</span> <span class="o">=</span> <span class="n">g</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_gn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradnrm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">g</span></div>
+
+<div class="viewcode-block" id="Objective.out"><a class="viewcode-back" href="../../../generated/adpeps.simulation.run_ipeps_gs.html#adpeps.simulation.run_ipeps_gs.Objective.out">[docs]</a>    <span class="k">def</span> <span class="nf">out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Computes the objective function (energy) of the iPEPS</span>
+
+<span class="sd">            Since many optimizers make separate calls to the objective function </span>
+<span class="sd">            and the gradient, but usually require both results for any given </span>
+<span class="sd">            parameter vector v, this function calls the gradient as well.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                v: input variational parameters for the site tensors of </span>
+<span class="sd">                    the iPEPS</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                energy of the iPEPS at the point :attr:`v` in parameter space</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_v</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-14</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_out</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jac</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cached_out</span></div>
+
+    <span class="k">def</span> <span class="nf">check_grads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Checking gradient&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peps</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peps</span><span class="o">.</span><span class="n">converge_boundaries</span><span class="p">()</span>
+        <span class="n">check_grads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">peps</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span><span class="p">,),</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">modes</span><span class="o">=</span><span class="s1">&#39;rev&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done check&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+    
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Boris Ponsioen.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

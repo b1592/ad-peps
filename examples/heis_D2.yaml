@@ -1,0 +1,47 @@
+# Base configuration file for iPEPS simulation
+# See the individual config modules for more information
+
+# Simulation options
+# -> ipeps/config.py
+D:             2
+chi:           41
+model:         'heisenberg'
+
+# (Ground state) Optimizer
+method:        'L-BFGS-B'
+
+# If an existing state is loaded in the model initialization, 
+# the seed controls the random (small) noise that is added to 
+# the site tensors
+seed:          1
+
+# Prefix for output file
+out_prefix:
+
+# Resume earlier simulation if found
+resume:        True
+
+model_params:
+  J:           1
+
+# Set to 0 to suppress all output besides printing each step
+disp_level:    2
+
+# CTM convergence criterium (singular values norm difference)
+ctm_conv_tol:  1.e-6
+
+# Minimal number of CTM steps
+ctm_min_iter:  4
+
+# Maximal number of CTM steps
+ctm_max_iter:  8
+
+# Flush output (prints with print(*args, flush=True))
+flush_output:  True
+
+# Unit cell pattern (Neel order)
+pattern:
+  [
+    [0,1],
+    [1,0],
+  ]

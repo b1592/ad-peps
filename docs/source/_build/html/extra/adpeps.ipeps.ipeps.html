@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>adpeps.ipeps.ipeps &#8212; AD-PEPS  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">AD-PEPS</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/start.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/example.html">
+  Example: ground state
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/example2.html">
+  Example: excitations
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.ipeps.ipeps.html">
+  adpeps.ipeps.ipeps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.ipeps.config.html">
+  adpeps.ipeps.config
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.ipeps.ctm.html">
+  adpeps.ipeps.ctm
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.ipeps.models.html">
+  adpeps.ipeps.models
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.simulation.html">
+  adpeps.simulation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../generated/adpeps.utils.html">
+  adpeps.utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/start.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/example.html">
+   Example: ground state
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/example2.html">
+   Example: excitations
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generated/adpeps.ipeps.ipeps.html">
+   adpeps.ipeps.ipeps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generated/adpeps.ipeps.config.html">
+   adpeps.ipeps.config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generated/adpeps.ipeps.ctm.html">
+   adpeps.ipeps.ctm
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/adpeps.ipeps.models.html">
+   adpeps.ipeps.models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.ipeps.models.common.html">
+     adpeps.ipeps.models.common
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.ipeps.models.heisenberg.html">
+     adpeps.ipeps.models.heisenberg
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/adpeps.simulation.html">
+   adpeps.simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.simulation.run_ipeps_exci.html">
+     adpeps.simulation.run_ipeps_exci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.simulation.run_ipeps_gs.html">
+     adpeps.simulation.run_ipeps_gs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../generated/adpeps.utils.html">
+   adpeps.utils
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.ctmtensors.html">
+     adpeps.utils.ctmtensors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.empty_tensor.html">
+     adpeps.utils.empty_tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.io.html">
+     adpeps.utils.io
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.nested.html">
+     adpeps.utils.nested
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.printing.html">
+     adpeps.utils.printing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../generated/adpeps.utils.tlist.html">
+     adpeps.utils.tlist
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ipeps">
+   iPEPS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ipeps-exci">
+   iPEPS_exci
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="adpeps-ipeps-ipeps">
+<h1>adpeps.ipeps.ipeps<a class="headerlink" href="#adpeps-ipeps-ipeps" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-adpeps.ipeps.ipeps"></span><p>iPEPS module for optimization with CTM</p>
+<p>For an example of how to run a simulation see <a class="reference internal" href="../generated/adpeps.simulation.run_ipeps_gs.html#module-0" title="adpeps.simulation.run_ipeps_gs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">adpeps.simulation.run_ipeps_gs</span></code></a></p>
+<p>The module is initialized from one of the specific
+model files, which return the initial boundary and
+site tensors</p>
+<p>The list of parameters is set to the elements of the
+individual site tensors</p>
+<p>Conventions for indices:</p>
+<blockquote>
+<div><ul>
+<li><p>Site tensors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">:</span> <span class="p">[</span><span class="n">phys</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Boundary tensors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C1</span><span class="p">:</span> <span class="p">[</span><span class="n">right</span><span class="p">,</span> <span class="n">bottom</span><span class="p">]</span>
+<span class="n">C2</span><span class="p">:</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span>  <span class="n">bottom</span><span class="p">]</span>
+<span class="n">C3</span><span class="p">:</span> <span class="p">[</span><span class="n">top</span><span class="p">,</span>   <span class="n">left</span><span class="p">]</span>
+<span class="n">C4</span><span class="p">:</span> <span class="p">[</span><span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">]</span>
+<span class="n">T1</span><span class="p">:</span> <span class="p">[</span><span class="n">right</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">]</span>
+<span class="n">T2</span><span class="p">:</span> <span class="p">[</span><span class="n">top</span><span class="p">,</span>   <span class="n">bottom</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">]</span>
+<span class="n">T3</span><span class="p">:</span> <span class="p">[</span><span class="n">right</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">]</span>
+<span class="n">T4</span><span class="p">:</span> <span class="p">[</span><span class="n">top</span><span class="p">,</span>   <span class="n">bottom</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>Order of boundary tensors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C1</span> <span class="o">-</span> <span class="n">T1</span> <span class="o">-</span> <span class="n">C2</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>
+<span class="n">T4</span> <span class="o">-</span> <span class="n">A</span>  <span class="o">-</span> <span class="n">T2</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|</span>
+<span class="n">C4</span> <span class="o">-</span> <span class="n">T3</span> <span class="o">-</span> <span class="n">C3</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt id="adpeps.ipeps.ipeps.iPEPS">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">iPEPS</span></code><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the iPEPS based on the settings in
+<a class="reference internal" href="../generated/adpeps.ipeps.config.html#module-0" title="adpeps.ipeps.config"><code class="xref py py-mod docutils literal notranslate"><span class="pre">adpeps.ipeps.config</span></code></a></p>
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS.converge_boundaries">
+<code class="sig-name descname"><span class="pre">converge_boundaries</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.converge_boundaries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS.converge_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs CTM on the boundary tensors until convergence,
+without gradient tracking</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS.fill">
+<code class="sig-name descname"><span class="pre">fill</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS.fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the site tensors with the elements
+The elements can be specified either as a list of (d,D,D,D,D)-dimensional
+arrays or one 1-dimensional array of all elements concatenated</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS.numel">
+<code class="sig-name descname"><span class="pre">numel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.numel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS.numel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of variational parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS.parse_elements">
+<code class="sig-name descname"><span class="pre">parse_elements</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.parse_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS.parse_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns site tensors filled with the input elements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>jax._src.numpy.lax_numpy.ndarray</em>) – variational parameters</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>energy of iPEPS</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="adpeps.ipeps.ipeps.iPEPS_exci">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">iPEPS_exci</span></code><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS_exci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS_exci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Excited-state variant of the iPEPS class</p>
+<dl class="py method">
+<dt id="adpeps.ipeps.ipeps.iPEPS_exci.fill">
+<code class="sig-name descname"><span class="pre">fill</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS_exci.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.iPEPS_exci.fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the site tensors with the elements
+The elements can be specified either as a list of (d,D,D,D,D)-dimensional
+arrays or one 1-dimensional array of all elements concatenated</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="adpeps.ipeps.ipeps.init_A_tensor">
+<code class="sig-name descname"><span class="pre">init_A_tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#init_A_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.init_A_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The elements will be randomized based on sim_config.seed</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="adpeps.ipeps.ipeps.init_ctm_tensors">
+<code class="sig-name descname"><span class="pre">init_ctm_tensors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ad</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#init_ctm_tensors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.ipeps.ipeps.init_ctm_tensors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns initital boundary T-tensors based on the unit cell tensors and
+empty trivial boundary C-tensors</p>
+</dd></dl>
+
+<div class="section" id="ipeps">
+<h2>iPEPS<a class="headerlink" href="#ipeps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="id0">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">iPEPS</span></code><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the iPEPS based on the settings in
+<a class="reference internal" href="../generated/adpeps.ipeps.config.html#module-0" title="adpeps.ipeps.config"><code class="xref py py-mod docutils literal notranslate"><span class="pre">adpeps.ipeps.config</span></code></a></p>
+<dl class="py method">
+<dt id="id1">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>jax._src.numpy.lax_numpy.ndarray</em>) – variational parameters</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>energy of iPEPS</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname"><span class="pre">converge_boundaries</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.converge_boundaries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs CTM on the boundary tensors until convergence,
+without gradient tracking</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname"><span class="pre">numel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.numel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of variational parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname"><span class="pre">parse_elements</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.parse_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns site tensors filled with the input elements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname"><span class="pre">fill</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the site tensors with the elements
+The elements can be specified either as a list of (d,D,D,D,D)-dimensional
+arrays or one 1-dimensional array of all elements concatenated</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ipeps-exci">
+<h2>iPEPS_exci<a class="headerlink" href="#ipeps-exci" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="id6">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">iPEPS_exci</span></code><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS_exci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Excited-state variant of the iPEPS class</p>
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname"><span class="pre">fill</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/ipeps/ipeps.html#iPEPS_exci.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill the site tensors with the elements
+The elements can be specified either as a list of (d,D,D,D,D)-dimensional
+arrays or one 1-dimensional array of all elements concatenated</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+    
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Boris Ponsioen.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

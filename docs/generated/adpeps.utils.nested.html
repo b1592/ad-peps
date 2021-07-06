@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>adpeps.utils.nested &#8212; AD-PEPS  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="adpeps.utils.printing" href="adpeps.utils.printing.html" />
+    <link rel="prev" title="adpeps.utils.io" href="adpeps.utils.io.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">AD-PEPS</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/start.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../notes/example.html">
+  Example: 2D Heisenberg model
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="adpeps.ipeps.ipeps.html">
+  adpeps.ipeps.ipeps
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="adpeps.ipeps.config.html">
+  adpeps.ipeps.config
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="adpeps.ipeps.ctm.html">
+  adpeps.ipeps.ctm
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="adpeps.ipeps.models.html">
+  adpeps.ipeps.models
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="adpeps.simulation.html">
+  adpeps.simulation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="adpeps.utils.html">
+  adpeps.utils
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/start.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/example.html">
+   Example: 2D Heisenberg model
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="adpeps.ipeps.ipeps.html">
+   adpeps.ipeps.ipeps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adpeps.ipeps.config.html">
+   adpeps.ipeps.config
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adpeps.ipeps.ctm.html">
+   adpeps.ipeps.ctm
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="adpeps.ipeps.models.html">
+   adpeps.ipeps.models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.ipeps.models.common.html">
+     adpeps.ipeps.models.common
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.ipeps.models.heisenberg.html">
+     adpeps.ipeps.models.heisenberg
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="adpeps.simulation.html">
+   adpeps.simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.simulation.run_ipeps_exci.html">
+     adpeps.simulation.run_ipeps_exci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.simulation.run_ipeps_gs.html">
+     adpeps.simulation.run_ipeps_gs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="adpeps.utils.html">
+   adpeps.utils
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.utils.ctmtensors.html">
+     adpeps.utils.ctmtensors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.utils.empty_tensor.html">
+     adpeps.utils.empty_tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.utils.io.html">
+     adpeps.utils.io
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     adpeps.utils.nested
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.utils.printing.html">
+     adpeps.utils.printing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adpeps.utils.tlist.html">
+     adpeps.utils.tlist
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-adpeps.utils.nested">
+<span id="adpeps-utils-nested"></span><h1>adpeps.utils.nested<a class="headerlink" href="#module-adpeps.utils.nested" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-0"></span><p>Contains utility class that represents a collection of tensors of
+different types, with operations that can be applied to all
+contained tensors at once</p>
+<dl class="py class">
+<dt id="adpeps.utils.nested.Nested">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Nested</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensors</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/utils/nested.html#Nested"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.utils.nested.Nested" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a helper class for the efficient contraction of variants of tensors,
+used in the energy evaluation of excited states</p>
+<p>A Nested tensor contains the following variants (some may be empty):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[0]</span></code>: regular tensor (no B or Bd)</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[1]</span></code>: (terms with) a single B tensor</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[2]</span></code>: (terms with) a single Bd tensor</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[3]</span></code>: (terms with) both a B and a Bd tensor</p></li>
+</ul>
+</div></blockquote>
+<p>When two Nested tensors x,y are contracted, all combinations are taken into account
+and the result is again a Nested tensor, filled with the following variants:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[0]:</span> <span class="pre">x[0]</span> <span class="pre">*</span> <span class="pre">y[0]</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[1]:</span> <span class="pre">x[1]</span> <span class="pre">*</span> <span class="pre">y[0]</span> <span class="pre">+</span> <span class="pre">x[0]</span> <span class="pre">*</span> <span class="pre">y[1]</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[2]:</span> <span class="pre">x[2]</span> <span class="pre">*</span> <span class="pre">y[0]</span> <span class="pre">+</span> <span class="pre">x[0]</span> <span class="pre">*</span> <span class="pre">y[2]</span></code></p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">tensors[3]:</span> <span class="pre">x[3]</span> <span class="pre">*</span> <span class="pre">y[0]</span> <span class="pre">+</span> <span class="pre">x[2]</span> <span class="pre">*</span> <span class="pre">y[1]</span> <span class="pre">+</span> <span class="pre">x[1]</span> <span class="pre">*</span> <span class="pre">y[2]</span> <span class="pre">+</span> <span class="pre">x[0]</span> <span class="pre">*</span> <span class="pre">y[3]</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>By using Nested tensors in a (large) contraction, the many different terms are
+resummed on the fly, leading to a potentially reduced computational cost</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most implented functions act as wrappers for the corresponding <cite>numpy</cite> functions
+on the individual tensors</p>
+</div>
+<dl class="py method">
+<dt id="adpeps.utils.nested.Nested.mult">
+<code class="sig-name descname"><span class="pre">mult</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/utils/nested.html#Nested.mult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.utils.nested.Nested.mult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>Union</em><em>[</em><em>np.ndarray</em><em>, </em><a class="reference internal" href="#adpeps.utils.nested.Nested" title="adpeps.utils.nested.Nested"><em>Nested</em></a><em>, </em><a class="reference internal" href="adpeps.utils.empty_tensor.html#adpeps.utils.empty_tensor.EmptyT" title="adpeps.utils.empty_tensor.EmptyT"><em>EmptyT</em></a><em>]</em>) – other tensor-like object to contract with</p></li>
+<li><p><strong>*args</strong> – arguments to be passed to the contraction method
+(<code class="code docutils literal notranslate"><span class="pre">np.tensordot</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result of the contraction</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>res</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#adpeps.utils.nested.Nested" title="adpeps.utils.nested.Nested">Nested</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.utils.nested.Nested.normalize">
+<code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/utils/nested.html#Nested.normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.utils.nested.Nested.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the contained tensors by the largest value
+of the first element of <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.tensors</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="adpeps.utils.nested.Nested.transpose">
+<code class="sig-name descname"><span class="pre">transpose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/adpeps/utils/nested.html#Nested.transpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#adpeps.utils.nested.Nested.transpose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies <code class="code docutils literal notranslate"><span class="pre">transpose</span></code> to each contained tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#adpeps.utils.nested.Nested" title="adpeps.utils.nested.Nested"><code class="xref py py-class docutils literal notranslate"><span class="pre">Nested</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+    
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Boris Ponsioen.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

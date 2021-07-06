@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-AD-PEPS's documentation
+AD-PEPS documentation
 ===================================
 
 The AD-PEPS Python package is intended as a example of an implementation of iPEPS ground-state and excited-state algorithms using Automatic Differentiation, as described in <paper>

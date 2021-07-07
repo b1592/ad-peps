@@ -160,7 +160,8 @@ def evaluate_single(config_file, momentum_ix):
     return sorted(ev.real)
 
 def evaluate(config_file, momentum_ix):
-    if momentum_ix != -2:
+    # Default option (-1): evaluate all momenta
+    if momentum_ix != -1:
         return evaluate_single(config_file, momentum_ix)
 
     with open(config_file) as f:
@@ -170,7 +171,7 @@ def evaluate(config_file, momentum_ix):
     print(dump(cfg))
 
     sim_config.from_dict(cfg)
-    kxs, kys = make_momentum_path(sim_config.momentum_path)
+    kxs, kys, plot_info = make_momentum_path(sim_config.momentum_path, with_plot_info=True)
 
     import matplotlib.pyplot as plt
     evs = []
@@ -180,7 +181,12 @@ def evaluate(config_file, momentum_ix):
         except:
             ev = [np.nan]
         evs.append(ev[0])
+
     plt.plot(evs, '--+')
+    plt.xticks(**plot_info['xticks'])
+    plt.title(f"Dispersion {sim_config.model} D={sim_config.D}")
+    plt.xlabel('k')
+    plt.ylabel('$\omega$')
     plt.show()
 
 

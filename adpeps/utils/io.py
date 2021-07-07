@@ -25,7 +25,7 @@ import adpeps.ipeps.config as sim_config
 def localize_data_file(filename):
     ROOT_DIR = adpeps.PROJECT_ROOT_DIR
     try:
-        base_out_folder = os.environ["DATADIR2"]
+        base_out_folder = os.environ["DATADIR"]
     except KeyError:
         base_out_folder = Path(ROOT_DIR, 'simulations')
     return Path(base_out_folder, filename)

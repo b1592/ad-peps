@@ -2,16 +2,7 @@ name: adpeps
 channels:
   - defaults
 dependencies:
-  - pip=21.0.1
-  - python=3.8.8
+  - pip
+  - python=3.10
   - pip:
-    - absl-py==0.12.0
-    - flatbuffers==1.12
-    - jax==0.2.12
-    - jaxlib==0.1.65
-    - numpy==1.20.2
-    - opt-einsum==3.3.0
-    - pyyaml==5.4.1
-    - scipy==1.6.2
-    - six==1.15.0
-    - git+ssh://git@github.com/b1592/ad-peps.git#egg=adpeps
+    - git+https://github.com/b1592/ad-peps.git

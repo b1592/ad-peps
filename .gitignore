@@ -1,6 +1,8 @@
 # Mac
 .DS_Store
 
+tags
+
 # Profile results
 *.lprof
 examples/iPEPS/test_*.py

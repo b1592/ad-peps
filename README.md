@@ -8,6 +8,11 @@ The package contains three main parts:
 - Executable scripts that run the simulations in `adpeps/simulation`
 - Helper classes and functions, with custom contraction and other operations in `adpeps/tensor` and general utilities in `adpeps/utils`
 
+
+## Documentation
+
+More extensive documentation can be found at [https://b1592.github.io/ad-peps](https://b1592.github.io/ad-peps).
+
 ## Installation
 
 Download this repository
@@ -20,7 +25,7 @@ Install the package using `pip`
 
 ```
 cd ad-peps
-pip install -e .
+pip install .
 ```
 
 ## Usage

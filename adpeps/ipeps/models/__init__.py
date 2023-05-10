@@ -2,6 +2,4 @@
 """
 
 # Spin models
-from . import heisenberg
-
-from . import common
+from . import common, heisenberg

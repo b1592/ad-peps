@@ -1,24 +1,31 @@
 """A module for the function ncon, which does contractions of several tensors.
 """
-import jax.numpy as np
 from collections.abc import Iterable
-from typing import Union, Optional, Any, Callable
+from typing import Any, Callable, Optional, Union
+
+import jax.numpy as np
 
 from adpeps.utils.empty_tensor import EmptyT
 from adpeps.utils.nested import Nested
 
 TensorType = Union[np.ndarray, Nested, EmptyT]
 
-# def ncon(L: Union[Iterable[TensorType], TensorType], v: Iterable[Iterable[int]], 
-#         order: Optional[Iterable[int]]=None, forder: Optional[Iterable[int]]=None, 
-#         check_indices: bool=True, empty_class: Any=list, normalize: bool=False, 
+
+# def ncon(L: Union[Iterable[TensorType], TensorType], v: Iterable[Iterable[int]],
+#         order: Optional[Iterable[int]]=None, forder: Optional[Iterable[int]]=None,
+#         check_indices: bool=True, empty_class: Any=list, normalize: bool=False,
 #         mult_method: Callable[[Any,Any,Iterable[int]], Any]=None
 #         ) -> TensorType:
-def ncon(L, v, 
-        order=None, forder=None, 
-        check_indices=True, empty_class=list, normalize=False, 
-        mult_method=None
-        ) -> TensorType:
+def ncon(
+    L,
+    v,
+    order=None,
+    forder=None,
+    check_indices=True,
+    empty_class=list,
+    normalize=False,
+    mult_method=None,
+) -> TensorType:
     """L = [A1, A2, ..., Ap] list of tensors.
 
     v = (v1, v2, ..., vp) tuple of lists of indices e.g. v1 = [3, 4, -1] labels
@@ -48,7 +55,7 @@ def ncon(L, v,
         L = list(L)
     if np.any(np.array([len(A) == 0 for A in L])):
         if normalize:
-            return empty_class(), 1.
+            return empty_class(), 1.0
         return empty_class()
     v = list(v)
     if not isinstance(v[0], Iterable):
@@ -102,7 +109,7 @@ def ncon(L, v,
     A = L[0]
     A = permute_final(A, vlast, forder)
     if normalize:
-        if hasattr(A, 'normalize'):
+        if hasattr(A, "normalize"):
             A, factor = A.normalize()
         else:
             factor = np.abs(A).max()
@@ -156,9 +163,7 @@ def connect_graph(L, v, order):
             visited.add(i)
             # Get the indices of tensors neighbouring L[i].
             i_inds = set(v[i])
-            neighs = (
-                j for j, j_inds in enumerate(v) if i_inds.intersection(j_inds)
-            )
+            neighs = (j for j, j_inds in enumerate(v) if i_inds.intersection(j_inds))
             for neigh in neighs:
                 if neigh not in visited:
                     to_visit.add(neigh)
@@ -205,8 +210,7 @@ def get_tcon(v, index):
     # checks should in fact be unnecessary.
     if l > 2:
         raise ValueError(
-            "In ncon.get_tcon, more than two tensors share a contraction "
-            "index."
+            "In ncon.get_tcon, more than two tensors share a contraction " "index."
         )
     elif l < 1:
         raise ValueError(
@@ -319,9 +323,7 @@ def do_check_indices(L, v, order, forder):
     # For t, o in zip(v_pairs, v_sum) t is the tuple of the number of
     # the tensor and the index and o is the contraction order of that
     # index. We group these tuples by the contraction order.
-    order_groups = [
-        [t for t, o in zip(v_pairs, v_sum) if o == e] for e in order
-    ]
+    order_groups = [[t for t, o in zip(v_pairs, v_sum) if o == e] for e in order]
     forder_groups = [[1 for fo in v_sum if fo == e] for e in forder]
     for i, o in enumerate(order_groups):
         if len(o) != 2:
@@ -343,8 +345,7 @@ def do_check_indices(L, v, order, forder):
                 raise ValueError(
                     "In ncon.do_check_indices, for the contraction index %i, "
                     "the leg %i of tensor number %i and the leg %i of tensor "
-                    "number %i are not compatible."
-                    % (order[i], ind0, A0, ind1, A1)
+                    "number %i are not compatible." % (order[i], ind0, A0, ind1, A1)
                 )
     for i, fo in enumerate(forder_groups):
         if len(fo) != 1:

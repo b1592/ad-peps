@@ -2,15 +2,17 @@
 
 import jax.numpy as np
 
-class EmptyT:
-    """ Empty tensor utility class, which can be used to represent a  
-        'zero' tensor.
 
-        The operations involving this type of tensor will return the expected 
-        results, such as (Tensor * EmptyT -> EmptyT), removing the need for 
-        checking if a tensor is empty in the part of the code where the 
-        operation is called.
+class EmptyT:
+    """Empty tensor utility class, which can be used to represent a
+    'zero' tensor.
+
+    The operations involving this type of tensor will return the expected
+    results, such as (Tensor * EmptyT -> EmptyT), removing the need for
+    checking if a tensor is empty in the part of the code where the
+    operation is called.
     """
+
     tag = None
 
     def __repr__(self):

@@ -11,6 +11,7 @@
 """
 
 import contextlib
+
 import jax
 import jax.numpy as np
 import numpy as onp
@@ -20,49 +21,50 @@ from .empty_tensor import EmptyT
 
 @contextlib.contextmanager
 def cur_loc(*loc: int):
-    """ Shift the locations of the tensors relative to a 
-        new zero (loc) while in this context
+    """Shift the locations of the tensors relative to a
+    new zero (loc) while in this context
 
-        Args:
-            loc: shifts (x,y)
+    Args:
+        loc: shifts (x,y)
 
-        Example:
-            >>> l = TList([[1,2], [3,4]])
-            >>> l[0,0]
-            1
-            >>> with cur_loc(1,0):
-            >>>     l[0,0]
-            2
-            >>>     l[0,1]
-            4
-            >>> l[0,0]
-            1
+    Example:
+        >>> l = TList([[1,2], [3,4]])
+        >>> l[0,0]
+        1
+        >>> with cur_loc(1,0):
+        >>>     l[0,0]
+        2
+        >>>     l[0,1]
+        4
+        >>> l[0,0]
+        1
 
-        Note that this applies to ALL TList objects while 
-        inside the context
+    Note that this applies to ALL TList objects while
+    inside the context
     """
-    pre_patched_value = getattr(TList, '_loc')
-    setattr(TList, '_loc', loc)
+    pre_patched_value = getattr(TList, "_loc")
+    setattr(TList, "_loc", loc)
     yield TList
-    setattr(TList, '_loc', pre_patched_value)
+    setattr(TList, "_loc", pre_patched_value)
+
 
 @contextlib.contextmanager
-def hold_write(*lists: 'TList'):
-    """ Hold off on writing to the list while 
-        inside the context
+def hold_write(*lists: "TList"):
+    """Hold off on writing to the list while
+    inside the context
 
-        Args:
-            lists: one or more TList objects that should have the writing 
-                action delayed until the context is disabled
+    Args:
+        lists: one or more TList objects that should have the writing
+            action delayed until the context is disabled
 
-        Example:
-            >>> l = TList([[1,2], [3,4]])
-            >>> with hold_write(l):
-            >>>    l[0,0] = 100
-            >>>    l[0,0] 
-            1
-            >>> l[0,0]
-            100
+    Example:
+        >>> l = TList([[1,2], [3,4]])
+        >>> with hold_write(l):
+        >>>    l[0,0] = 100
+        >>>    l[0,0]
+        1
+        >>> l[0,0]
+        100
     """
     for l in lists:
         l._hold_write = True
@@ -70,47 +72,49 @@ def hold_write(*lists: 'TList'):
     for l in lists:
         l._purge_tmp()
 
+
 @contextlib.contextmanager
 def set_pattern(pattern):
-    """ Set pattern for all new TLists that are created while 
-        the context is active
+    """Set pattern for all new TLists that are created while
+    the context is active
 
-        Args:
-            pattern:
+    Args:
+        pattern:
     """
 
-    pre_patched_value = getattr(TList, '_default_pattern')
-    setattr(TList, '_default_pattern', pattern)
+    pre_patched_value = getattr(TList, "_default_pattern")
+    setattr(TList, "_default_pattern", pattern)
     yield TList
-    setattr(TList, '_default_pattern', pre_patched_value)
+    setattr(TList, "_default_pattern", pre_patched_value)
+
 
 class TList:
-    _loc             = (0,0)
+    _loc = (0, 0)
     _default_pattern = None
-    _changed         = None
+    _changed = None
 
     def __init__(self, data=None, shape=None, pattern=None, empty_obj=[[]]):
-        self._tmpdata    = None
-        self.pattern     = pattern
+        self._tmpdata = None
+        self.pattern = pattern
         self._hold_write = False
-        self.empty_obj   = empty_obj
+        self.empty_obj = empty_obj
         if pattern is None and self._default_pattern is not None:
             self.pattern = self._default_pattern
         if self.pattern is None:
             if data is not None:
                 try:
-                    iter(data) # Check if iterable
-                    data = np.array(data, dtype='object')
-                    self._data = data.reshape([-1], order='C').tolist()
+                    iter(data)  # Check if iterable
+                    data = np.array(data, dtype="object")
+                    self._data = data.reshape([-1], order="C").tolist()
                     if data.ndim == 1:
                         self.size = (data.shape[0], 1)
                     else:
                         self.size = (data.shape[1], data.shape[0])
                 except:
                     self._data = [data]
-                    self.size = (1,1)
+                    self.size = (1, 1)
             elif shape is not None:
-                self._data = (shape[0]*shape[1]) * empty_obj
+                self._data = (shape[0] * shape[1]) * empty_obj
                 self.size = shape
             else:
                 self._data = None
@@ -120,29 +124,38 @@ class TList:
             self.size = (self.pattern.shape[1], self.pattern.shape[0])
             if data is not None:
                 try:
-                    iter(data) # Check if iterable
-                    data = np.array(data, dtype='object')
+                    iter(data)  # Check if iterable
+                    data = np.array(data, dtype="object")
                     if data.size == np.unique(self.pattern).size:
-                        self._data = data.reshape([-1], order='C').tolist()
+                        self._data = data.reshape([-1], order="C").tolist()
                     else:
                         self._data = np.unique(self.pattern).size * empty_obj
                         for j in range(self.pattern.shape[1]):
                             for i in range(self.pattern.shape[0]):
-                                self._data[self.pattern[i,j]] = data[i,j]
+                                self._data[self.pattern[i, j]] = data[i, j]
                 except:
                     self._data = [data]
-                    self.size = (1,1)
+                    self.size = (1, 1)
             else:
                 self._data = np.unique(self.pattern).size * empty_obj
-                assert len(self._data) == np.unique(self.pattern).size, \
-                        "Data must contain one element for each unique identifier in pattern"
+                assert (
+                    len(self._data) == np.unique(self.pattern).size
+                ), "Data must contain one element for each unique identifier in pattern"
         self.reset_changed()
 
     def x_major(self):
-        return (self._conv_ix((x,y)) for y in range(self.size[1]) for x in range(self.size[0]))
+        return (
+            self._conv_ix((x, y))
+            for y in range(self.size[1])
+            for x in range(self.size[0])
+        )
 
     def y_major(self):
-        return (self._conv_ix((x,y)) for x in range(self.size[0]) for y in range(self.size[1]))
+        return (
+            self._conv_ix((x, y))
+            for x in range(self.size[0])
+            for y in range(self.size[1])
+        )
 
     def __len__(self):
         return len(self._data)
@@ -170,6 +183,7 @@ class TList:
         new_list = TList(shape=self.size, pattern=self.pattern)
         new_list._data = [a.conj() for a in self._data]
         return new_list
+
     def items(self):
         return [a.item() for a in self._data]
 
@@ -198,10 +212,10 @@ class TList:
         new_list = TList(shape=self.size, pattern=self.pattern)
         offset = 0
         new_data = []
-        for i,a in enumerate(self):
+        for i, a in enumerate(self):
             siz = a.size
             # new_data.append(np.reshape(data[offset:offset+siz], (d, D, D, D, D)))
-            new_data.append(np.reshape(data[offset:offset+siz], a.shape))
+            new_data.append(np.reshape(data[offset : offset + siz], a.shape))
             offset = offset + siz
         new_list._data = new_data
         return new_list
@@ -211,11 +225,13 @@ class TList:
 
     def stop_gradient(self):
         new_list = TList(shape=self.size, pattern=self.pattern)
-        new_list._data = [jax.lax.stop_gradient(a) if len(a)>0 else a for a in self._data]
+        new_list._data = [
+            jax.lax.stop_gradient(a) if len(a) > 0 else a for a in self._data
+        ]
         return new_list
 
     def _conv_ix(self, ix):
-        if isinstance(ix, (tuple,list)):
+        if isinstance(ix, (tuple, list)):
             if len(self._loc) == 1:
                 # shift_i, shift_j = onp.unravel_index(self._loc[0], self.size, order='F')
                 shift_j, shift_i = np.unravel_index(self._loc[0], self.size)
@@ -224,7 +240,7 @@ class TList:
             i = (ix[0] + shift_i) % self.size[0]
             j = (ix[1] + shift_j) % self.size[1]
             # linear_ix = np.ravel_multi_index((i,j), self.size, order='F')
-            linear_ix = self._linear_ix(i,j)
+            linear_ix = self._linear_ix(i, j)
         else:
             linear_ix = ix
         return linear_ix
@@ -233,10 +249,10 @@ class TList:
         if self.pattern is not None:
             return self.pattern[j][i]
         else:
-            return np.ravel_multi_index((i,j), self.size, order='F')
+            return np.ravel_multi_index((i, j), self.size, order="F")
 
     def _purge_tmp(self):
-        self._tmpdata    = None
+        self._tmpdata = None
         self._hold_write = False
 
     def __eq__(self, other):
@@ -280,10 +296,10 @@ class TList:
                 try:
                     repr_str += f"{self[i,j].shape}"
                 except:
-                    repr_str += self[i,j].__repr__()
-                if i < self.size[0]-1:
+                    repr_str += self[i, j].__repr__()
+                if i < self.size[0] - 1:
                     repr_str += ", "
-            if j < self.size[1]-1:
+            if j < self.size[1] - 1:
                 repr_str += "], "
             else:
                 repr_str += "]]"
@@ -294,6 +310,7 @@ class TList:
         if empty_obj is None:
             empty_obj = T.empty_obj
         return TList(shape=T.size, pattern=T.pattern, empty_obj=empty_obj)
+
 
 def isfinite(x):
     try:

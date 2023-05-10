@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ad-peps"
+version = "1.1.0"
+description = "iPEPS ground states and excitations with AD"
+authors = ["Boris Ponsioen <b.g.t.ponsioen@uva.nl>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "adpeps"}]
+repository = "https://github.com/b1592/ad-peps"
+documentation = "https://b1592.github.io/ad-peps"
+
+[tool.poetry.dependencies]
+python = ">=3.6"
+jax = "<=0.4.8"
+jaxlib = "<=0.4.8"
+PyYAML = "^6.0"
+numpy = "^1.24.3"
+scipy = "^1.10.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -4,66 +4,70 @@
 """
 
 import cmath
+
+import jax
 import jax.numpy as np
+import numpy as onp
 
 from adpeps.types import TensorType
 
 
 class Nested:
-    """ This is a helper class for the efficient contraction of variants of tensors,
-        used in the energy evaluation of excited states
+    """This is a helper class for the efficient contraction of variants of tensors,
+    used in the energy evaluation of excited states
 
-        A Nested tensor contains the following variants (some may be empty):
+    A Nested tensor contains the following variants (some may be empty):
 
-            - :attr:`tensors[0]`: regular tensor (no B or Bd)
-            - :attr:`tensors[1]`: (terms with) a single B tensor
-            - :attr:`tensors[2]`: (terms with) a single Bd tensor
-            - :attr:`tensors[3]`: (terms with) both a B and a Bd tensor
-        
-        When two Nested tensors x,y are contracted, all combinations are taken into account
-        and the result is again a Nested tensor, filled with the following variants:
+        - :attr:`tensors[0]`: regular tensor (no B or Bd)
+        - :attr:`tensors[1]`: (terms with) a single B tensor
+        - :attr:`tensors[2]`: (terms with) a single Bd tensor
+        - :attr:`tensors[3]`: (terms with) both a B and a Bd tensor
 
-            - :attr:`tensors[0]: x[0] * y[0]`
-            - :attr:`tensors[1]: x[1] * y[0] + x[0] * y[1]`
-            - :attr:`tensors[2]: x[2] * y[0] + x[0] * y[2]`
-            - :attr:`tensors[3]: x[3] * y[0] + x[2] * y[1] + x[1] * y[2] + x[0] * y[3]`
+    When two Nested tensors x,y are contracted, all combinations are taken into account
+    and the result is again a Nested tensor, filled with the following variants:
 
-        By using Nested tensors in a (large) contraction, the many different terms are 
-        resummed on the fly, leading to a potentially reduced computational cost
+        - :attr:`tensors[0]: x[0] * y[0]`
+        - :attr:`tensors[1]: x[1] * y[0] + x[0] * y[1]`
+        - :attr:`tensors[2]: x[2] * y[0] + x[0] * y[2]`
+        - :attr:`tensors[3]: x[3] * y[0] + x[2] * y[1] + x[1] * y[2] + x[0] * y[3]`
 
-        Note:
-            Most implented functions act as wrappers for the corresponding `numpy` functions 
-            on the individual tensors
+    By using Nested tensors in a (large) contraction, the many different terms are
+    resummed on the fly, leading to a potentially reduced computational cost
+
+    Note:
+        Most implented functions act as wrappers for the corresponding `numpy` functions
+        on the individual tensors
     """
 
     def __init__(self, tensors):
         self.tensors = tensors
 
     def normalize(self):
-        """ Normalize the contained tensors by the largest value 
-            of the first element of :attr:`self.tensors`
+        """Normalize the contained tensors by the largest value
+        of the first element of :attr:`self.tensors`
         """
         factor = np.abs(self[0]).max()
         return self * (1 / factor), factor
 
-    def mult(self, other: TensorType, *args) -> 'Nested':
+    def mult(self, other: TensorType, *args) -> "Nested":
         """
-            Args:
-                other: other tensor-like object to contract with
-                *args: arguments to be passed to the contraction method
-                    (:code:`np.tensordot`)
+        Args:
+            other: other tensor-like object to contract with
+            *args: arguments to be passed to the contraction method
+                (:code:`np.tensordot`)
 
-            Returns:
-                res: result of the contraction
+        Returns:
+            res: result of the contraction
         """
+
         def _mult_function(A, B, *args):
-            if hasattr(A, 'mult'):
+            if hasattr(A, "mult"):
                 return A.mult(B, *args)
             elif len(B) == 0:
                 return B.mult(A, *args)
             return np.tensordot(A, B, *args)
 
-        if isinstance(other, np.ndarray):
+        if isinstance(other, jax.Array | onp.ndarray):
             new_data = 4 * [[]]
             new_data[0] = _mult_function(self.tensors[0], other, *args)
             new_data[1] = _mult_function(self.tensors[1], other, *args)
@@ -72,20 +76,24 @@ class Nested:
             return Nested(new_data)
         new_data = 4 * [[]]
         new_data[0] = _mult_function(self.tensors[0], other.tensors[0], *args)
-        new_data[1] = _mult_function(self.tensors[1], other.tensors[0], *args) +\
-                      _mult_function(self.tensors[0], other.tensors[1], *args)
-        new_data[2] = _mult_function(self.tensors[2], other.tensors[0], *args) +\
-                      _mult_function(self.tensors[0], other.tensors[2], *args)
+        new_data[1] = _mult_function(
+            self.tensors[1], other.tensors[0], *args
+        ) + _mult_function(self.tensors[0], other.tensors[1], *args)
+        new_data[2] = _mult_function(
+            self.tensors[2], other.tensors[0], *args
+        ) + _mult_function(self.tensors[0], other.tensors[2], *args)
 
-        new_data[3] = _mult_function(self.tensors[3], other.tensors[0], *args) +\
-                      _mult_function(self.tensors[2], other.tensors[1], *args) +\
-                      _mult_function(self.tensors[1], other.tensors[2], *args) +\
-                      _mult_function(self.tensors[0], other.tensors[3], *args)
+        new_data[3] = (
+            _mult_function(self.tensors[3], other.tensors[0], *args)
+            + _mult_function(self.tensors[2], other.tensors[1], *args)
+            + _mult_function(self.tensors[1], other.tensors[2], *args)
+            + _mult_function(self.tensors[0], other.tensors[3], *args)
+        )
         res = Nested(new_data)
         return res
 
-    def transpose(self, *args) -> 'Nested':
-        """ Applies :code:`transpose` to each contained tensor """
+    def transpose(self, *args) -> "Nested":
+        """Applies :code:`transpose` to each contained tensor"""
         new_data = [self.tensors[i].transpose(*args) for i in range(4)]
         return Nested(new_data)
 
@@ -124,8 +132,12 @@ class Nested:
         return Nested([-self.tensors[i] for i in range(4)])
 
     def shift(self, phi):
-        new_data = [self.tensors[0],  self.tensors[1] * exp(phi), 
-                 self.tensors[2] * exp(-phi), self.tensors[3]]
+        new_data = [
+            self.tensors[0],
+            self.tensors[1] * exp(phi),
+            self.tensors[2] * exp(-phi),
+            self.tensors[3],
+        ]
         return Nested(new_data)
 
     def __len__(self):
@@ -152,10 +164,11 @@ class Nested:
 
     def numel(self):
         return self[0].numel()
-    
+
     @classmethod
     def only_gs(cls, tensor, empty_obj=[]):
         return cls([tensor, empty_obj, empty_obj, empty_obj])
+
 
 def exp(phi):
     return cmath.exp(1j * phi)
